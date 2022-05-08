@@ -1,0 +1,1064 @@
+#include <stdio.h>
+#include <locale.h>
+#include <conio.h> 
+#include <unistd.h>
+
+#include <ctype.h>
+#include <string.h>
+#include <stdlib.h> 
+
+
+//KULLANICI GÝRÝÞ SAYFASI
+
+int anasayfa(){
+	
+	char Mensay;
+	
+    
+    printf("---------------------------------------------------------\n");
+    printf("------------------ÇÝÇEK ÖNERÝSÝ AL-----------------------\n");
+    printf("----Merhaba Çiçek Önerisi Platformuna Hoþgeldiniz!-------\n");
+    printf("---------------------------------------------------------\n");
+    printf("*********************************************************\n\n");
+    
+    printf("	MENÜ\n");
+    printf("	1 >> Çiçek Arýyorum Bana Bir Fikir Ver.\n");
+    printf("	2 >> Sisteminizde Kayýtlý Olan Çiçekleri Göster.\n");
+    printf("  Seçeneðiniz : ");
+    scanf("%c",&Mensay);
+    
+    //Kullanýcý istediði bölüme iletmek için yazýlmýþ kýsým.
+    
+    if(isdigit(Mensay))
+    {
+    	if(Mensay=='1')fikirgetir();	
+		else if(Mensay=='2')gstr();
+		else
+		{
+		 system("cls");
+		 printf(">>>>>>>>>>>>> Lütfen geçerli bir sayý giriniz.\n\n");
+		 anasayfa();
+		}
+    	
+	}
+	else
+	{
+		 system("cls");
+		 printf(">>>>>>>>>>>>> Lütfen geçerli bir sayý giriniz.\n\n");
+		 anasayfa();
+		 
+	}
+}
+
+
+
+
+
+
+
+//KULLANICIYA BÝR FÝKÝR VER FONKSÝYONU
+
+int fikirgetir()
+{
+
+	char kategorisay;
+	system("color 09");
+	
+	
+    printf("---------------------------------------------------------\n");
+    printf("---------------------------------------------------------\n");
+    printf("----- Aradýðýnýz Çiçek Hangi Kategoride Bulunuyor. ------\n\n");
+    printf("	1 >> Mevsimine Göre\n");
+    printf("	2 >> Hisslere Göre\n");
+    printf("	3 >> Rengine Göre\n");
+    printf("  Cevabýnýz : ");
+  
+    scanf("%c",&kategorisay);
+    
+    //ÝSDÝGÝT ÝLE RAKAMSAL HATALARI ENGELLEDÝM.
+    
+    if(isdigit(kategorisay))
+    {
+	    if(kategorisay=='1'){
+	    	iklimgetir();
+		}
+		else if(kategorisay=='2')
+		{
+				hissgstr();
+		}
+		else if(kategorisay=='3')
+		{
+				renkgstr();
+		}
+		else
+		{
+		 system("cls");
+		 fikirgetir();
+		}
+	}
+	else
+	{
+		system("cls");
+		fikirgetir();		
+	}
+    
+
+}
+
+// SEÇENEK 1 DE ÖZELLÝKLERE GÖRE KATEGORÝZE EDÝYORUZ.
+
+int hissgstr()
+{
+	system("color 0A");
+	system("cls");
+    printf("---------------------------------------------------------");
+   	printf("---------------------------------------------------------\n");
+   	printf("---------------------------------------------------------");
+   	printf("---------------------------------------------------------\n");
+    printf("---------------------------- Hangi Çiçek Hangi Özelliði Taþýyor! -------------------------------------------------");
+	vertaban("hepsi",6,"boþ");
+}
+
+// SEÇENEK 1 DE RENKLERE GÖRE KATEGORÝZE EDÝYORUZ.
+
+int renkgstr()
+{
+	system("cls");
+    printf("---------------------------------------------------------");
+   	printf("---------------------------------------------------------\n");
+   	printf("---------------------------------------------------------");
+   	printf("---------------------------------------------------------\n");
+    printf("---------------------------- RENKLERÝNE GÖRE KATEGORÝZE EDÝLMÝÞ ÇÝÇEKLER -----------------------------------------\n\n");
+	vertaban("hepsi",5,"boþ");
+}
+
+// SEÇENEK 1 DE MEVSÝMLERÝNE GÖRE KATEGORÝZE EDÝYORUZ.
+
+int iklimgetir()
+{
+	system("color 0C");
+	char iklimsay;
+	char *mevsim;
+	system("cls");
+    printf("---------------------------------------------------------\n");
+    printf("---------------------------------------------------------\n");
+    printf("---Aradýðýnýz Çiçeði Hangi Kategori Ýle Tanýmlarsýnýz.---\n\n");
+    printf("	1 >> Kýþ Mevsimi\n");
+    printf("	2 >> Yaz Mevsimi\n");
+    printf("	3 >> Sonbahar Mevsimi \n");
+    printf("	4 >> Ýlkbahar Mevsimi \n");
+    printf("  Cevabýnýz : ");
+    scanf("%c",&iklimsay);
+    
+    //KULLANICIDAN ALDIÐIM VERÝYE GÖRE KULLANICIYA BÝR ÇIKTI GÖSTERDÝM VE ONLARI VERÝTABANINA GÖNDERDÝM.
+    
+    if(isdigit(iklimsay))
+    {
+	    if(iklimsay=='1'){
+	    	system("color 0B");
+	    	sleep(1);
+	    	printf("\n\n	KIÞ MEVSÝMÝ ÇÝÇEKLERÝ	\n\n");
+	    	sleep(1);
+	    	printf("		Kýþýn solmayan çiçekler ile ruhunuzu arýndýrýp evinizin en güzel köþelerini\n");
+	    	sleep(3);
+	    	printf("		renklendirmeniz adýna sizlere kýþa dayanýklý çiçekler listesi hazýrladýk..\n");
+	    	sleep(3);
+	    	printf("		Listemizde yer alan kýþ çiçekleri çeþitleri size çiçek önerisi konusunda fikir oluþturabilir.\n\n");
+	    	mevsim="Kýþ";
+	    	vertaban(mevsim,0,"boþ");
+		}
+		else if(iklimsay=='2')
+		{
+			system("color 0E");
+			sleep(1);
+	    	printf("\n\n	YAZ MEVSÝMÝ ÇÝÇEKLERÝ	\n\n");
+	    	sleep(1);
+	    	printf("	Yaz aylarýnýn gelmesiyle beraber, balkon ve teraslarýmýzdaki bitkilerle daha çok vakit geçirmeye baþladýk.\n");
+	    	sleep(3);
+	    	printf("	Havalarýn ýsýnmasýyla birlikte, yemyeþil bitkilerle bezenmiþ balkon ve teraslarda, uzun saatler harcýyoruz.\n");
+	    	sleep(3);
+	    	printf("	Listemizde yer alan yaz çiçekleri çeþitleri size çiçek önerisi konusunda fikir oluþturabilir.\n\n");
+	    	mevsim="Yaz";
+	    	vertaban(mevsim,0,"boþ");
+		}
+		else if(iklimsay=='3')
+		{
+			system("color 08");
+			sleep(1);
+	    	printf("\n\n	SONBAHAR MEVSÝMÝ ÇÝÇEKLERÝ	\n\n");
+	    	sleep(1);
+	    	printf("	Nedense 4 mevsimin en hüzünlüsü olarak resmedilir sonbahar.Oysa ki yüzlerce\n");
+	    	sleep(3);
+	    	printf("Film için ilham kaynaðý olmuþken neden hep kasvetli, donuk ve depresif ifadelerle anlatýlýr bilinmez.\n");
+	    	sleep(3);
+	    	printf("	Listemizde yer alan sonbahar çiçekleri çeþitleri size çiçek önerisi konusunda fikir oluþturabilir.\n\n");
+			mevsim="Sonbahar";
+	    	vertaban(mevsim,0,"boþ");
+		}
+		else if(iklimsay=='4')
+		{
+			system("color 0A");
+			sleep(1);
+	    	printf("\n\n	ÝLKBAHAR MEVSÝMÝ ÇÝÇEKLERÝ	\n\n");
+	    	sleep(1);
+	    	printf("	Baharý müjdeleyen, bahar mevsiminin artýk bizimle olduðunu duyuran çiçekler bahar çiçekleridir.\n");
+	    	sleep(3);
+	    	printf("	Bunlarýn yanýnda en güzel ilkbahar çiçeklerini bahçelerde ve saksýlarda görmeyi de isteriz.\n");
+	    	sleep(3);
+	    	printf("	Listemizde yer alan bahar çiçekleri çeþitleri size çiçek önerisi konusunda fikir oluþturabilir.\n\n");
+			mevsim="Bahar";
+	    	vertaban(mevsim,0,"boþ");
+		}
+		else
+		{
+			iklimgetir();
+		}
+	}
+	else
+	{
+
+		iklimgetir();
+	}
+    
+    
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+//KULLANICIYA SÝSTEMDEKÝ ÇÝÇEKLERÝ GÖSTERME FONKSÝYONU
+int gstr()
+{
+	system("color 0E");
+	system("cls");
+    printf("---------------------------------------------------------");
+   	printf("---------------------------------------------------------\n");
+   	printf("---------------------------------------------------------");
+   	printf("---------------------------------------------------------\n");
+    printf("---------------------------- Size Sistemimizdeki Kayýtlý Olan Tüm Çiçekleri Gösteriyoruz! ------------------------\n\n");
+	vertaban("hepsi",4,"boþ");
+}
+
+
+
+
+
+//ÇÝÇEK VERÝTABANI
+
+struct flowers{
+	char ad[100];
+	char mevsim[100];
+    char ozellik[100];
+    char renk[100];
+    
+    }flower[100];
+
+
+int vertaban(char gelenver[100], int girissay,char renk[100]){
+	
+	
+												//KIÞ BÝTKÝLER
+	strcpy(flower[0].ad,"Helleborus – Noel Gülü"); strcpy(flower[0].mevsim,"Kýþ"); strcpy(flower[0].ozellik,"Estetik"); strcpy(flower[0].renk,"Kýrmýzý");
+	strcpy(flower[1].ad,"Orkide Çiçeði"); strcpy(flower[1].mevsim,"Kýþ"); strcpy(flower[1].ozellik,"Zarif"); strcpy(flower[1].renk,"Renkli");
+	strcpy(flower[2].ad,"Küpe Çiçeði"); strcpy(flower[2].mevsim,"Kýþ"); strcpy(flower[2].ozellik,"Süslü"); strcpy(flower[2].renk,"Pembe");
+	strcpy(flower[3].ad,"Kasýmpatý Çiçeði"); strcpy(flower[3].mevsim,"Kýþ"); strcpy(flower[3].ozellik,"Zarif"); strcpy(flower[3].renk,"Renkli");
+	strcpy(flower[4].ad,"Kardelen Çiçeði "); strcpy(flower[4].mevsim,"Kýþ"); strcpy(flower[4].ozellik,"Zarif"); strcpy(flower[4].renk,"Renkli");
+	
+	strcpy(flower[5].ad,"Þebboy Çiçeði"); strcpy(flower[5].mevsim,"Kýþ"); strcpy(flower[5].ozellik,"Estetik"); strcpy(flower[5].renk,"Sarý");
+	strcpy(flower[6].ad,"Sýklamen Çiçeði"); strcpy(flower[6].mevsim,"Kýþ"); strcpy(flower[6].ozellik,"Estetik"); strcpy(flower[6].renk,"Kýrmýzý");
+	strcpy(flower[7].ad,"Kýþ Sümbülü"); strcpy(flower[7].mevsim,"Kýþ"); strcpy(flower[7].ozellik,"Kalýcý"); strcpy(flower[7].renk,"Pembe");
+	strcpy(flower[8].ad,"Nergis Çiçeði"); strcpy(flower[8].mevsim,"Kýþ"); strcpy(flower[8].ozellik,"Süslü"); strcpy(flower[8].renk,"Sarý");
+	
+	strcpy(flower[9].ad,"Açelya Çiçeði"); strcpy(flower[9].mevsim,"Kýþ"); strcpy(flower[9].ozellik,"Estetik"); strcpy(flower[9].renk,"Pembe");
+	strcpy(flower[10].ad,"Çuha Çiçeði"); strcpy(flower[10].mevsim,"Kýþ"); strcpy(flower[10].ozellik,"Estetik"); strcpy(flower[10].renk,"Renkli");
+	strcpy(flower[11].ad,"Hercai Menekþe"); strcpy(flower[11].mevsim,"Kýþ"); strcpy(flower[11].ozellik,"Kalýcý"); strcpy(flower[11].renk,"Pembe");
+	strcpy(flower[12].ad,"Karanfil"); strcpy(flower[12].mevsim,"Kýþ"); strcpy(flower[12].ozellik,"Zarif"); strcpy(flower[12].renk,"Kýrmýzý");
+	strcpy(flower[13].ad,"On Bir Ay Çiçeði"); strcpy(flower[13].mevsim,"Kýþ"); strcpy(flower[13].ozellik,"Zarif"); strcpy(flower[13].renk,"Pembe");
+	
+	strcpy(flower[14].ad,"Atatürk çiçeði"); strcpy(flower[14].mevsim,"Kýþ"); strcpy(flower[14].ozellik,"Estetik"); strcpy(flower[14].renk,"Kýrmýzý");
+	strcpy(flower[15].ad,"Manolya"); strcpy(flower[15].mevsim,"Kýþ"); strcpy(flower[15].ozellik,"Kalýcý"); strcpy(flower[15].renk,"Pembe");
+	strcpy(flower[16].ad,"Kamelya çiçeði"); strcpy(flower[16].mevsim,"Kýþ"); strcpy(flower[16].ozellik,"Süslü"); strcpy(flower[16].renk,"Renkli");
+	strcpy(flower[17].ad,"Gardenya çiçeði"); strcpy(flower[17].mevsim,"Kýþ"); strcpy(flower[17].ozellik,"Zarif"); strcpy(flower[17].renk,"Sarý");
+	strcpy(flower[18].ad,"Mum çiçeði"); strcpy(flower[18].mevsim,"Kýþ"); strcpy(flower[18].ozellik,"Süslü"); strcpy(flower[18].renk,"Kýrmýzý");	
+	
+															//YAZ BÝTKÝLER
+	strcpy(flower[19].ad,"Begonya"); strcpy(flower[19].mevsim,"Yaz"); strcpy(flower[19].ozellik,"Kalýcý"); strcpy(flower[19].renk,"Sarý");
+	strcpy(flower[20].ad,"Bodrum papatyasý"); strcpy(flower[20].mevsim,"Yaz"); strcpy(flower[20].ozellik,"Kalýcý"); strcpy(flower[20].renk,"Renkli");
+	strcpy(flower[21].ad,"Cennet kuþu çalýsý"); strcpy(flower[21].mevsim,"Yaz"); strcpy(flower[21].ozellik,"Süslü"); strcpy(flower[21].renk,"Sarý");
+	strcpy(flower[22].ad,"Gaura çalýsý"); strcpy(flower[22].mevsim,"Yaz"); strcpy(flower[22].ozellik,"Kalýcý"); strcpy(flower[22].renk,"Pembe");
+	strcpy(flower[23].ad,"Kadife çiçeði"); strcpy(flower[23].mevsim,"Yaz"); strcpy(flower[23].ozellik,"Kalýcý"); strcpy(flower[23].renk,"Sarý");
+	
+	strcpy(flower[24].ad,"Ortanca çiçeði"); strcpy(flower[24].mevsim,"Yaz"); strcpy(flower[24].ozellik,"Estetik"); strcpy(flower[24].renk,"Pembe	");
+	strcpy(flower[25].ad,"Kalanþo bitkis"); strcpy(flower[25].mevsim,"Yaz"); strcpy(flower[25].ozellik,"Süslü"); strcpy(flower[25].renk,"Renkli");
+	strcpy(flower[26].ad,"Sardunya"); strcpy(flower[26].mevsim,"Yaz"); strcpy(flower[26].ozellik,"Estetik"); strcpy(flower[26].renk,"Renkli");
+	strcpy(flower[27].ad,"Cam güzeli"); strcpy(flower[27].mevsim,"Yaz"); strcpy(flower[27].ozellik,"Estetik"); strcpy(flower[27].renk,"Kýrmýzý");
+	strcpy(flower[28].ad,"Barýþ çiçeði"); strcpy(flower[28].mevsim,"Yaz"); strcpy(flower[28].ozellik,"Kalýcý"); strcpy(flower[28].renk,"Renkli");
+	
+	strcpy(flower[29].ad,"Gardenya"); strcpy(flower[29].mevsim,"Yaz"); strcpy(flower[29].ozellik,"Kalýcý"); strcpy(flower[29].renk,"Renkli");
+	strcpy(flower[30].ad,"Guzmanya"); strcpy(flower[30].mevsim,"Yaz"); strcpy(flower[30].ozellik,"Kalýcý"); strcpy(flower[30].renk,"Kýrmýzý");
+	strcpy(flower[31].ad,"Ekinezya"); strcpy(flower[31].mevsim,"Yaz"); strcpy(flower[31].ozellik,"Süslü"); strcpy(flower[31].renk,"Pembe");
+	strcpy(flower[32].ad,"Lavanta"); strcpy(flower[32].mevsim,"Yaz"); strcpy(flower[32].ozellik,"Kalýcý"); strcpy(flower[32].renk,"Pembe");
+	strcpy(flower[33].ad,"Ateþ Çiçeði"); strcpy(flower[33].mevsim,"Yaz"); strcpy(flower[33].ozellik,"Estetik"); strcpy(flower[33].renk,"Kýrmýzý");
+	
+	strcpy(flower[34].ad,"Yýldýz Çiçeði"); strcpy(flower[34].mevsim,"Yaz"); strcpy(flower[34].ozellik,"Zarif"); strcpy(flower[34].renk,"Sarý");
+	strcpy(flower[35].ad,"Bodrum papatyasý"); strcpy(flower[35].mevsim,"Yaz"); strcpy(flower[35].ozellik,"Estetik"); strcpy(flower[35].renk,"Pembe");
+	strcpy(flower[36].ad,"Aðaç minesi"); strcpy(flower[36].mevsim,"Yaz"); strcpy(flower[36].ozellik,"Süslü"); strcpy(flower[36].renk,"Renkli");
+	strcpy(flower[37].ad,"Alisyum Çiçeði"); strcpy(flower[37].mevsim,"Yaz"); strcpy(flower[37].ozellik,"Estetik"); strcpy(flower[37].renk,"Renkli");
+	strcpy(flower[38].ad,"Zinya kiti Çiçeði"); strcpy(flower[38].mevsim,"Yaz"); strcpy(flower[38].ozellik,"Süslü"); strcpy(flower[38].renk,"Renkli");
+
+															//SONBAHAR BÝTKÝLER
+	strcpy(flower[39].ad,"Abelya"); strcpy(flower[39].mevsim,"Sonbahar"); strcpy(flower[39].ozellik,"Süslü"); strcpy(flower[39].renk,"Renkli");
+	strcpy(flower[40].ad,"Akasya çiçeði"); strcpy(flower[40].mevsim,"Sonbahar"); strcpy(flower[40].ozellik,"Estetik"); strcpy(flower[40].renk,"Renkli");
+	strcpy(flower[41].ad,"HELLEBORUS"); strcpy(flower[41].mevsim,"Sonbahar"); strcpy(flower[41].ozellik,"Kalýcý"); strcpy(flower[41].renk,"Kýrmýzý");
+	strcpy(flower[42].ad,"Selozya"); strcpy(flower[42].mevsim,"Sonbahar"); strcpy(flower[42].ozellik,"Estetik"); strcpy(flower[42].renk,"Renkli");
+	strcpy(flower[43].ad,"Güneþ Þapkasý"); strcpy(flower[43].mevsim,"Sonbahar"); strcpy(flower[43].ozellik,"Süslü"); strcpy(flower[43].renk,"Sarý");
+	
+	strcpy(flower[44].ad,"Kuduzotu"); strcpy(flower[44].mevsim,"Sonbahar"); strcpy(flower[44].ozellik,"Süslü"); strcpy(flower[44].renk,"Renkli");
+	strcpy(flower[45].ad,"Saraypatý"); strcpy(flower[45].mevsim,"Sonbahar"); strcpy(flower[45].ozellik,"Estetik"); strcpy(flower[45].renk,"Kýrmýzý");
+	strcpy(flower[46].ad,"Frezya çiçeði"); strcpy(flower[46].mevsim,"Sonbahar"); strcpy(flower[46].ozellik,"Estetik"); strcpy(flower[46].renk,"Pembe");
+	strcpy(flower[47].ad,"Yasemin çiçeði"); strcpy(flower[47].mevsim,"Sonbahar"); strcpy(flower[47].ozellik,"Kalýcý"); strcpy(flower[47].renk,"Renkli");
+	strcpy(flower[48].ad,"Estolzia"); strcpy(flower[48].mevsim,"Sonbahar"); strcpy(flower[48].ozellik,"Estetik"); strcpy(flower[48].renk,"Renkli");
+	
+	strcpy(flower[49].ad,"Dimorfoteka"); strcpy(flower[49].mevsim,"Sonbahar"); strcpy(flower[49].ozellik,"Zarif"); strcpy(flower[49].renk,"Pembe");
+	strcpy(flower[50].ad,"Kaya alyssum"); strcpy(flower[50].mevsim,"Sonbahar"); strcpy(flower[50].ozellik,"Zarif"); strcpy(flower[50].renk,"Renkli");
+	strcpy(flower[51].ad,"Lobelia"); strcpy(flower[51].mevsim,"Sonbahar"); strcpy(flower[51].ozellik,"Estetik"); strcpy(flower[51].renk,"Pembe");
+	strcpy(flower[52].ad,"Petunya	"); strcpy(flower[52].mevsim,"Sonbahar"); strcpy(flower[52].ozellik,"Süslü"); strcpy(flower[52].renk,"Pembe");
+	strcpy(flower[53].ad,"Kýþ Tatlýsý"); strcpy(flower[53].mevsim,"Sonbahar"); strcpy(flower[53].ozellik,"Zarif"); strcpy(flower[53].renk,"Sarý");
+	
+	strcpy(flower[54].ad,"Cadý Fýndýðý"); strcpy(flower[54].mevsim,"Sonbahar"); strcpy(flower[54].ozellik,"Zarif"); strcpy(flower[54].renk,"Sarý");
+	strcpy(flower[55].ad,"Parlak Yapraklý Kartopu"); strcpy(flower[55].mevsim,"Sonbahar"); strcpy(flower[55].ozellik,"Kalýcý"); strcpy(flower[55].renk,"Renkli");
+	strcpy(flower[56].ad,"Dikenli Ýðde"); strcpy(flower[56].mevsim,"Sonbahar"); strcpy(flower[56].ozellik,"Zarif"); strcpy(flower[56].renk,"Sarý");
+	strcpy(flower[57].ad,"Kýþ Yasemini"); strcpy(flower[57].mevsim,"Sonbahar"); strcpy(flower[57].ozellik,"Zarif"); strcpy(flower[57].renk,"Sarý");
+	strcpy(flower[58].ad,"Zakkum"); strcpy(flower[58].mevsim,"Sonbahar"); strcpy(flower[58].ozellik,"Zarif"); strcpy(flower[58].renk,"Kýrmýzý");
+	
+	
+														//ÝLKBAHAR BÝTKÝLER
+	strcpy(flower[59].ad,"Lale"); strcpy(flower[59].mevsim,"Bahar"); strcpy(flower[59].ozellik,"Estetik"); strcpy(flower[59].renk,"Renkli");
+	strcpy(flower[60].ad,"Defne çiçeði"); strcpy(flower[60].mevsim,"Bahar"); strcpy(flower[60].ozellik,"Süslü"); strcpy(flower[60].renk,"Pembe");
+	strcpy(flower[61].ad,"Papatya"); strcpy(flower[61].mevsim,"Bahar"); strcpy(flower[61].ozellik,"Zarif"); strcpy(flower[61].renk,"Renkli");
+	strcpy(flower[62].ad,"Anemon"); strcpy(flower[62].mevsim,"Bahar"); strcpy(flower[62].ozellik,"Estetik"); strcpy(flower[62].renk,"Pembe");
+	strcpy(flower[63].ad,"Ormangülü"); strcpy(flower[63].mevsim,"Bahar"); strcpy(flower[63].ozellik,"Süslü"); strcpy(flower[63].renk,"Renkli");
+	
+	strcpy(flower[64].ad,"Ýris"); strcpy(flower[64].mevsim,"Bahar"); strcpy(flower[64].ozellik,"Estetik"); strcpy(flower[64].renk,"Pembe");
+	strcpy(flower[65].ad,"Müge çiçeði"); strcpy(flower[65].mevsim,"Bahar"); strcpy(flower[65].ozellik,"Zarif"); strcpy(flower[65].renk,"Renkli");
+	strcpy(flower[66].ad,"Çiðdem"); strcpy(flower[66].mevsim,"Bahar"); strcpy(flower[66].ozellik,"Zarif"); strcpy(flower[66].renk,"Pembe");
+	strcpy(flower[67].ad,"Hor çiçeði"); strcpy(flower[67].mevsim,"Bahar"); strcpy(flower[67].ozellik,"Estetik"); strcpy(flower[67].renk,"Sarý	");
+	strcpy(flower[68].ad,"Leylak"); strcpy(flower[68].mevsim,"Bahar"); strcpy(flower[68].ozellik,"Kalýcý"); strcpy(flower[68].renk,"Pembe");
+	
+	strcpy(flower[69].ad,"Weigela"); strcpy(flower[69].mevsim,"Bahar"); strcpy(flower[69].ozellik,"Kalýcý"); strcpy(flower[69].renk,"Pembe");
+	strcpy(flower[70].ad,"Zambak"); strcpy(flower[70].mevsim,"Bahar"); strcpy(flower[70].ozellik,"Zarif"); strcpy(flower[70].renk,"Renkli");
+	strcpy(flower[71].ad,"Acý bakla"); strcpy(flower[71].mevsim,"Bahar"); strcpy(flower[71].ozellik,"Süslü"); strcpy(flower[71].renk,"Renkli");
+	strcpy(flower[72].ad,"Leucojum"); strcpy(flower[72].mevsim,"Bahar"); strcpy(flower[72].ozellik,"Estetik"); strcpy(flower[72].renk,"Kýrmýzý");
+	strcpy(flower[73].ad,"Muscari"); strcpy(flower[73].mevsim,"Bahar"); strcpy(flower[73].ozellik,"Zarif"); strcpy(flower[73].renk,"Pembe");
+	
+	strcpy(flower[74].ad,"Scilla"); strcpy(flower[74].mevsim,"Bahar"); strcpy(flower[74].ozellik,"Estetik"); strcpy(flower[74].renk,"Renkli");
+	strcpy(flower[75].ad,"Puþkinia"); strcpy(flower[75].mevsim,"Bahar"); strcpy(flower[75].ozellik,"Kalýcý"); strcpy(flower[75].renk,"Renkli");
+	strcpy(flower[76].ad,"Fritillaria"); strcpy(flower[76].mevsim,"Bahar"); strcpy(flower[76].ozellik,"Zarif"); strcpy(flower[76].renk,"Kýrmýzý");
+	strcpy(flower[77].ad,"Bulbocodium"); strcpy(flower[77].mevsim,"Bahar"); strcpy(flower[77].ozellik,"Estetik"); strcpy(flower[77].renk,"Sarý");
+	strcpy(flower[78].ad,"Proleski"); strcpy(flower[78].mevsim,"Bahar"); strcpy(flower[78].ozellik,"Kalýcý"); strcpy(flower[78].renk,"Sarý");
+	strcpy(flower[79].ad,"Iridodiktium"); strcpy(flower[79].mevsim,"Bahar"); strcpy(flower[79].ozellik,"Kalýcý"); strcpy(flower[79].renk,"Kýrmýzý");
+	
+	
+	
+
+	
+	int i=0;
+	char *vertabanoku="";
+	char renkdeg[100];
+	
+	//SAYDIRMAK ÝÇÝN KULLANDIM.
+	int say=0;
+	int say2=0;
+	int say3=0;
+	int say4=0;
+	int say5=0;
+	int say6=0;
+	int say7=0;
+	int say8=0;
+	char belirleyici[100];
+
+	
+	//GELEN VERÝLERÝ KATEGORÝZE EDÝLDÝÐÝ YER
+		
+	if(gelenver=="Yaz"||gelenver=="Kýþ"||gelenver=="Bahar"||gelenver=="Sonbahar")
+	{
+		vertabanoku="mevsim";
+	}
+
+	
+	
+	//KULLANININ SEÇTÝÐÝ BÖLÜME GÖRE GELECEK OLAN VERÝLER
+
+	if(girissay==0)
+	{
+		
+		//GÖNDERÝLEN GÝRÝÞ SAYISI 0 SA VE MEVSÝM GÖNDERÝLMÝÞTE 
+		//GELEN MEVSÝME GÖRE SIRALAMA VE KULLANICIDAN RENK ÝSTEME KISMI.
+		if(vertabanoku=="mevsim")
+			{
+				
+				for(i=0;i<80;i++)
+					{			
+						if(strcmp(flower[i].mevsim,gelenver)==0)
+						{
+							say2++;
+							printf("		%d - %s\n",say2,flower[i].ad);
+						}
+						//sleep(1);
+					}	
+			}
+			
+			printf("\n		Aradýðýnýz Çiçeðe biraz daha yakýnlaþýyoruz!");
+			printf("\n\n		Aradýðýnýz Çiçek Hangi Renk?");
+			printf("Renkli, Pembe, Kýrmýzý, Sarý diyebilirsiniz.");
+			printf("\n		Cevabýnýz : ");
+			
+			scanf("%s",&renkdeg);
+			system("cls");
+			vertaban(gelenver,1,renkdeg);
+			
+			
+	}
+	if(girissay==1)
+	{
+		printf("---------------------------------------------------------");
+   	 	printf("---------------------------------------------------------\n");
+   	 	printf("---------------------------------------------------------");
+   	 	printf("---------------------------------------------------------\n");
+    	
+		
+		renkdeg[0]=renk[0];
+		renkdeg[0]=tolower(renkdeg[0]);
+		
+		
+
+
+	
+			if(strcmp(renkdeg,"k")==0)
+			{
+				printf("----------------------------------- Sizin Ýçin Kýrmýzý Çiçekleri Renklerine Ayýrýyoruz ---------------------------\n\n");
+				for(i=0;i<80;i++)
+					{		
+							
+						if(strcmp(flower[i].mevsim,gelenver)==0 && strcmp(flower[i].renk,"Kýrmýzý")==0  )
+						{
+							say++;
+							printf("					     %d - %s\n",say,flower[i].ad);
+						}
+					}
+			 }
+			 else if(strcmp(renkdeg,"s")==0)
+			{
+				printf("----------------------------------- Sizin Ýçin Sarý Çiçekleri Renklerine Ayýrýyoruz ---------------------------\n\n");
+				for(i=0;i<80;i++)
+					{		
+							
+						if(strcmp(flower[i].mevsim,gelenver)==0 && strcmp(flower[i].renk,"Sarý")==0  )
+						{
+							say++;
+							printf("					     %d - %s\n",say,flower[i].ad);
+						}
+					}
+			 }
+			 else if(strcmp(renkdeg,"p")==0)
+			{
+				printf("----------------------------------- Sizin Ýçin Pembe Çiçekleri Renklerine Ayýrýyoruz ---------------------------\n\n");
+				for(i=0;i<80;i++)
+					{		
+						if(strcmp(flower[i].mevsim,gelenver)==0 && strcmp(flower[i].renk,"Pembe")==0  )
+						{
+							say++;
+							printf("					     %d - %s\n",say,flower[i].ad);
+						}
+					}
+			 }
+			 else if(strcmp(renkdeg,"r")==0)
+			{
+				printf("----------------------------------- Sizin Ýçin Renkli Çiçekleri Renklerine Ayýrýyoruz ---------------------------\n\n");
+				for(i=0;i<80;i++)
+					{		
+							
+						if(strcmp(flower[i].mevsim,gelenver)==0 && strcmp(flower[i].renk,"Renkli")==0  )
+						{
+							say++;
+							printf("					     %d - %s\n",say,flower[i].ad);
+						}
+					}
+			 }
+			 else
+			 {
+			 	vertaban(gelenver,2,renkdeg);
+			 }
+			 
+			printf("\n					Aradýðýnýz Çiçeðe Sadece Bir Adým Kaldý!");
+			printf("\n\n			Aradýðýnýz Çiçekte Bu Özelliklerden Hangisinin Olmasýný Ýsterdiniz?\n");
+			printf("			    		Estetiklik, Zariflik, Kalýcýlýk, Süslülük\n");
+			printf("\n					     Cevabýnýz : ");
+			scanf("%s",&belirleyici);
+			
+			
+			if(isalpha(belirleyici[0]))
+			{
+				char son[100];
+				son[0]=belirleyici[0];
+				son[0]= tolower(son[0]);
+				printf(son);
+				
+				if(strcmp(son,"e")==0)
+				{
+					system("cls");
+					printf("---------------------------------------------------------");
+   	 				printf("---------------------------------------------------------\n");
+					printf("--------------------------------------  Editörümüzün Sizin Ýçin Seçtikleri Çiçekler  ----------------------------\n\n");
+					
+					if(strcmp(renkdeg,"k")==0)
+					{
+						for(i=0;i<80;i++)
+						{		
+							
+							if(strcmp(flower[i].mevsim,gelenver)==0 && strcmp(flower[i].renk,"Kýrmýzý")==0 && strcmp(flower[i].ozellik,"Estetik")==0 )
+							{	
+								printf("		%d - %s    >> Mevsimi : %s >> Hissiyat : %s  >> Renk : %s\n",say,flower[i].ad,flower[i].mevsim,flower[i].ozellik,flower[i].renk);
+								
+							}
+						}	
+					}
+					
+					else if(strcmp(renkdeg,"s")==0)
+					{
+						
+						for(i=0;i<80;i++)
+						{		
+							
+							if(strcmp(flower[i].mevsim,gelenver)==0 && strcmp(flower[i].renk,"Sarý")==0 && strcmp(flower[i].ozellik,"Estetik")==0 )
+							{	
+								printf("		%d - %s    >> Mevsimi : %s >> Hissiyat : %s  >> Renk : %s\n",say,flower[i].ad,flower[i].mevsim,flower[i].ozellik,flower[i].renk);
+								
+							}
+						}
+					}
+					else if(strcmp(renkdeg,"p")==0)
+					{
+	
+						for(i=0;i<80;i++)
+						{		
+							
+							if(strcmp(flower[i].mevsim,gelenver)==0 && strcmp(flower[i].renk,"Pembe")==0 && strcmp(flower[i].ozellik,"Estetik")==0 )
+							{	
+								printf("		%d - %s    >> Mevsimi : %s >> Hissiyat : %s  >> Renk : %s\n",say,flower[i].ad,flower[i].mevsim,flower[i].ozellik,flower[i].renk);
+								
+							}
+						}
+					}
+					else if(strcmp(renkdeg,"r")==0)
+					{
+						
+						for(i=0;i<80;i++)
+						{		
+							
+							if(strcmp(flower[i].mevsim,gelenver)==0 && strcmp(flower[i].renk,"Renkli")==0 && strcmp(flower[i].ozellik,"Estetik")==0 )
+							{	
+								printf("		%d - %s    >> Mevsimi : %s >> Hissiyat : %s  >> Renk : %s\n",say,flower[i].ad,flower[i].mevsim,flower[i].ozellik,flower[i].renk);
+								
+							}
+						}
+					}
+				
+				 }
+				else if(strcmp(son,"z")==0)
+				{
+					system("cls");
+					printf("---------------------------------------------------------");
+   	 				printf("---------------------------------------------------------\n");
+					printf("--------------------------------------  Editörümüzün Sizin Ýçin Seçtikleri Çiçekler  ----------------------------\n\n");
+					
+					
+					if(strcmp(renkdeg,"k")==0)
+					{
+						for(i=0;i<80;i++)
+						{		
+							
+							if(strcmp(flower[i].mevsim,gelenver)==0 && strcmp(flower[i].renk,"Kýrmýzý")==0 && strcmp(flower[i].ozellik,"Zarif")==0 )
+							{	
+								printf("		%d - %s    >> Mevsimi : %s >> Hissiyat : %s  >> Renk : %s\n",say,flower[i].ad,flower[i].mevsim,flower[i].ozellik,flower[i].renk);
+								
+							}
+						}	
+					}
+					else if(strcmp(renkdeg,"m")==0)
+					{
+						
+						for(i=0;i<80;i++)
+						{		
+							
+							if(strcmp(flower[i].mevsim,gelenver)==0 && strcmp(flower[i].renk,"Mavi")==0 && strcmp(flower[i].ozellik,"Zarif")==0 )
+							{	
+								printf("		%d - %s    >> Mevsimi : %s >> Hissiyat : %s  >> Renk : %s\n",say,flower[i].ad,flower[i].mevsim,flower[i].ozellik,flower[i].renk);
+								
+							}
+						}
+					}
+					else if(strcmp(renkdeg,"s")==0)
+					{
+						
+						for(i=0;i<80;i++)
+						{		
+							
+							if(strcmp(flower[i].mevsim,gelenver)==0 && strcmp(flower[i].renk,"Sarý")==0 && strcmp(flower[i].ozellik,"Zarif")==0 )
+							{	
+								printf("		%d - %s    >> Mevsimi : %s >> Hissiyat : %s  >> Renk : %s\n",say,flower[i].ad,flower[i].mevsim,flower[i].ozellik,flower[i].renk);
+								
+							}
+						}
+					}
+					else if(strcmp(renkdeg,"p")==0)
+					{
+						
+						for(i=0;i<80;i++)
+						{		
+							
+							if(strcmp(flower[i].mevsim,gelenver)==0 && strcmp(flower[i].renk,"Pembe")==0 && strcmp(flower[i].ozellik,"Zarif")==0 )
+							{	
+								printf("		%d - %s    >> Mevsimi : %s >> Hissiyat : %s  >> Renk : %s\n",say,flower[i].ad,flower[i].mevsim,flower[i].ozellik,flower[i].renk);
+								
+							}
+						}
+					}
+					else if(strcmp(renkdeg,"r")==0)
+					{
+						
+						for(i=0;i<80;i++)
+						{		
+							
+							if(strcmp(flower[i].mevsim,gelenver)==0 && strcmp(flower[i].renk,"Renkli")==0 && strcmp(flower[i].ozellik,"Zarif")==0 )
+							{	
+								printf("		%d - %s    >> Mevsimi : %s >> Hissiyat : %s  >> Renk : %s\n",say,flower[i].ad,flower[i].mevsim,flower[i].ozellik,flower[i].renk);
+								
+							}
+						}
+					}
+				 }
+				else if(strcmp(son,"k")==0)
+				{
+					system("cls");
+					printf("---------------------------------------------------------");
+   	 				printf("---------------------------------------------------------\n");
+					printf("--------------------------------------  Editörümüzün Sizin Ýçin Seçtikleri Çiçekler  ----------------------------\n\n");
+					
+					if(strcmp(renkdeg,"k")==0)
+					{
+						for(i=0;i<80;i++)
+						{		
+							
+							if(strcmp(flower[i].mevsim,gelenver)==0 && strcmp(flower[i].renk,"Kýrmýzý")==0 && strcmp(flower[i].ozellik,"Kalýcý")==0 )
+							{	
+								printf("		%d - %s    >> Mevsimi : %s >> Hissiyat : %s  >> Renk : %s\n",say,flower[i].ad,flower[i].mevsim,flower[i].ozellik,flower[i].renk);
+								
+							}
+						}	
+					}
+					else if(strcmp(renkdeg,"m")==0)
+					{
+						
+						for(i=0;i<80;i++)
+						{		
+							
+							if(strcmp(flower[i].mevsim,gelenver)==0 && strcmp(flower[i].renk,"Mavi")==0 && strcmp(flower[i].ozellik,"Kalýcý")==0 )
+							{	
+								printf("		%d - %s    >> Mevsimi : %s >> Hissiyat : %s  >> Renk : %s\n",say,flower[i].ad,flower[i].mevsim,flower[i].ozellik,flower[i].renk);
+								
+							}
+						}
+					}
+					else if(strcmp(renkdeg,"s")==0)
+					{
+						
+						for(i=0;i<80;i++)
+						{		
+							
+							if(strcmp(flower[i].mevsim,gelenver)==0 && strcmp(flower[i].renk,"Sarý")==0 && strcmp(flower[i].ozellik,"Kalýcý")==0 )
+							{	
+								printf("		%d - %s    >> Mevsimi : %s >> Hissiyat : %s  >> Renk : %s\n",say,flower[i].ad,flower[i].mevsim,flower[i].ozellik,flower[i].renk);
+								
+							}
+						}
+					}
+					else if(strcmp(renkdeg,"p")==0)
+					{
+						
+						for(i=0;i<80;i++)
+						{		
+							
+							if(strcmp(flower[i].mevsim,gelenver)==0 && strcmp(flower[i].renk,"Pembe")==0 && strcmp(flower[i].ozellik,"Kalýcý")==0 )
+							{	
+								printf("		%d - %s    >> Mevsimi : %s >> Hissiyat : %s  >> Renk : %s\n",say,flower[i].ad,flower[i].mevsim,flower[i].ozellik,flower[i].renk);
+								
+							}
+						}
+					}
+					else if(strcmp(renkdeg,"r")==0)
+					{
+						
+						for(i=0;i<80;i++)
+						{		
+							
+							if(strcmp(flower[i].mevsim,gelenver)==0 && strcmp(flower[i].renk,"Renkli")==0 && strcmp(flower[i].ozellik,"Kalýcý")==0 )
+							{	
+								printf("		%d - %s    >> Mevsimi : %s >> Hissiyat : %s  >> Renk : %s\n",say,flower[i].ad,flower[i].mevsim,flower[i].ozellik,flower[i].renk);
+								
+							}
+						}
+					}
+					
+				 }
+				else if(strcmp(son,"s")==0)
+				{
+					system("cls");
+					printf("---------------------------------------------------------");
+   	 				printf("---------------------------------------------------------\n");
+					printf("--------------------------------------  Editörümüzün Sizin Ýçin Seçtikleri Çiçekler  ----------------------------\n\n");
+					
+					
+					if(strcmp(renkdeg,"k")==0)
+					{
+						for(i=0;i<80;i++)
+						{		
+							
+							if(strcmp(flower[i].mevsim,gelenver)==0 && strcmp(flower[i].renk,"Kýrmýzý")==0 && strcmp(flower[i].ozellik,"Süslü")==0 )
+							{	
+								printf("		%d - %s    >> Mevsimi : %s >> Hissiyat : %s  >> Renk : %s\n",say,flower[i].ad,flower[i].mevsim,flower[i].ozellik,flower[i].renk);
+								
+							}
+						}	
+					}
+					else if(strcmp(renkdeg,"m")==0)
+					{
+						
+						for(i=0;i<80;i++)
+						{		
+							
+							if(strcmp(flower[i].mevsim,gelenver)==0 && strcmp(flower[i].renk,"Mavi")==0 && strcmp(flower[i].ozellik,"Süslü")==0 )
+							{	
+								printf("		%d - %s    >> Mevsimi : %s >> Hissiyat : %s  >> Renk : %s\n",say,flower[i].ad,flower[i].mevsim,flower[i].ozellik,flower[i].renk);
+								
+							}
+						}
+					}
+					else if(strcmp(renkdeg,"s")==0)
+					{
+						
+						for(i=0;i<80;i++)
+						{		
+							
+							if(strcmp(flower[i].mevsim,gelenver)==0 && strcmp(flower[i].renk,"Sarý")==0 && strcmp(flower[i].ozellik,"Süslü")==0 )
+							{	
+								printf("		%d - %s    >> Mevsimi : %s >> Hissiyat : %s  >> Renk : %s\n",say,flower[i].ad,flower[i].mevsim,flower[i].ozellik,flower[i].renk);
+								
+							}
+						}
+					}
+					else if(strcmp(renkdeg,"p")==0)
+					{
+						
+						for(i=0;i<80;i++)
+						{		
+							
+							if(strcmp(flower[i].mevsim,gelenver)==0 && strcmp(flower[i].renk,"Pembe")==0 && strcmp(flower[i].ozellik,"Süslü")==0 )
+							{	
+								printf("		%d - %s    >> Mevsimi : %s >> Hissiyat : %s  >> Renk : %s\n",say,flower[i].ad,flower[i].mevsim,flower[i].ozellik,flower[i].renk);
+								
+							}
+						}
+					}
+					else if(strcmp(renkdeg,"r")==0)
+					{
+						
+						for(i=0;i<80;i++)
+						{		
+							
+							if(strcmp(flower[i].mevsim,gelenver)==0 && strcmp(flower[i].renk,"Renkli")==0 && strcmp(flower[i].ozellik,"Süslü")==0 )
+							{	
+								printf("		%d - %s    >> Mevsimi : %s >> Hissiyat : %s  >> Renk : %s\n",say,flower[i].ad,flower[i].mevsim,flower[i].ozellik,flower[i].renk);
+								
+							}
+						}
+					}
+				 }
+				 else
+				 {
+					system("cls");
+					vertaban(gelenver,2,renkdeg);
+				 }
+				 
+				 printf("\n\n		Kategorize edilmiþ Çiçekleri Gördünüz Geri Dönmek Ýçin 0'a Basýnýz.'");
+					int ver;
+					scanf("%d",&ver);
+					if(ver==0)
+					{
+						system("cls");
+						anasayfa();
+					}
+				 
+			}
+			else
+			{
+				printf("Sistemimizde Seçmiþ Olduðunuz Renk Kaydedilmemiþtir.");
+				system("cls");
+				vertaban(gelenver,1,renkdeg);	
+			}
+			
+	}
+	else if(girissay==2)
+	 {
+	 		printf("------------------------------------------------------------------------------------------------------------------\n");
+   	 		printf("------------------------------------------------------------------------------------------------------------------\n");
+	    	printf(" -------------------------- Hatalý Giriþ Yaptýnýz Lütfen Renk Seçiminden Devam Ediniz. --------------------------\n\n");
+	 	    printf("		Aradýðýnýz Çiçek Hangi Renk?");
+	 	    printf("Renkli, Pembe, Kýrmýzý, Sarý diyebilirsiniz.");
+			printf("\n		Cevabýnýz : ");
+			
+			scanf("%s",&renkdeg);
+			system("cls");
+			vertaban(gelenver,1,renkdeg);
+	 }
+	 else if(girissay==4)
+	 {
+	 	
+	 	for(i=0;i<80;i++)
+	 	{
+	 	
+	 		if(i<10)
+	 		{
+	 			printf("	              %d - %s    >> Mevsimi : %s >> Hissiyat : %s  >> Renk : %s\n",i,flower[i].ad,flower[i].mevsim,flower[i].ozellik,flower[i].renk); 
+			 }
+			 else
+			 {
+			 	printf("	             %d - %s    >> Mevsimi : %s >> Hissiyat : %s  >> Renk : %s\n",i,flower[i].ad,flower[i].mevsim,flower[i].ozellik,flower[i].renk); 
+			 }
+	 				 			
+		}
+		printf("\n\n		Kategorize edilmiþ Çiçekleri Gördünüz Geri Dönmek Ýçin 0'a Basýnýz.'");
+			int ver;
+			scanf("%d",&ver);
+			if(ver==0)
+			{
+				system("cls");
+				anasayfa();
+			}
+	 }	
+	 else if(girissay==5)
+	 {
+	 
+	 	printf("---------------------------------- Renkli Çiçekler ---------------------------------------------------------------\n\n");
+	 	for(i=0;i<80;i++)
+			{			
+				if(strcmp(flower[i].renk,"Renkli")==0)
+				{
+					say3++;
+					if(say3<10)
+					{
+						printf("	   %d - %s    >> Mevsimi : %s >> Hissiyat : %s  >> Renk : %s\n",say3,flower[i].ad,flower[i].mevsim,flower[i].ozellik,flower[i].renk); 
+					}
+					else
+					{
+						printf("	  %d - %s    >> Mevsimi : %s >> Hissiyat : %s  >> Renk : %s\n",say3,flower[i].ad,flower[i].mevsim,flower[i].ozellik,flower[i].renk); 
+					}
+				   
+				
+				}
+			//sleep(1);
+			}
+		
+			printf("\n\n---------------------------------- Kýrmýzý Çiçekler ---------------------------------------------------------------\n\n");
+	 	for(i=0;i<80;i++)
+			{			
+				if(strcmp(flower[i].renk,"Kýrmýzý")==0)
+				{
+					say4++;
+					if(say4<10)
+					{
+						printf("	   %d - %s    >> Mevsimi : %s >> Hissiyat : %s  >> Renk : %s\n",say4,flower[i].ad,flower[i].mevsim,flower[i].ozellik,flower[i].renk); 
+					}
+					else
+					{
+						printf("	  %d - %s    >> Mevsimi : %s >> Hissiyat : %s  >> Renk : %s\n",say4,flower[i].ad,flower[i].mevsim,flower[i].ozellik,flower[i].renk); 
+					}
+				   
+				
+				}
+			//sleep(1);
+			}
+			
+			printf("\n\n---------------------------------- Sarý Çiçekler ---------------------------------------------------------------\n\n");
+	 	for(i=0;i<80;i++)
+			{			
+				if(strcmp(flower[i].renk,"Sarý")==0)
+				{
+					say6++;
+					if(say6<10)
+					{
+						 printf("	   %d - %s    >> Mevsimi : %s >> Hissiyat : %s  >> Renk : %s\n",say6,flower[i].ad,flower[i].mevsim,flower[i].ozellik,flower[i].renk); 
+					}
+					else
+					{
+						 printf("	  %d - %s    >> Mevsimi : %s >> Hissiyat : %s  >> Renk : %s\n",say6,flower[i].ad,flower[i].mevsim,flower[i].ozellik,flower[i].renk); 
+					}
+				  
+				
+				}
+			//sleep(1);
+			}
+			printf("\n\n---------------------------------- Pembe Çiçekler ---------------------------------------------------------------\n\n");
+	 	for(i=0;i<80;i++)
+			{			
+				if(strcmp(flower[i].renk,"Pembe")==0)
+				{
+					say7++;
+					if(say7<10)
+					{
+						printf("	   %d - %s    >> Mevsimi : %s >> Hissiyat : %s  >> Renk : %s\n",say7,flower[i].ad,flower[i].mevsim,flower[i].ozellik,flower[i].renk); 
+					}
+					else
+					{
+						printf("	  %d - %s    >> Mevsimi : %s >> Hissiyat : %s  >> Renk : %s\n",say7,flower[i].ad,flower[i].mevsim,flower[i].ozellik,flower[i].renk); 
+					}
+				   
+				
+				}
+			//sleep(1);
+			}
+			
+			printf("\n\n		Kategorize edilmiþ Çiçekleri Gördünüz Geri Dönmek Ýçin 0'a Basýnýz.'");
+			int ver;
+			scanf("%d",&ver);
+			if(ver==0)
+			{
+				system("cls");
+				anasayfa();
+			}
+	 }
+	 else if(girissay==6)
+	 {
+	 	
+	 	printf("\n\n");
+
+	 	printf("---------------------------------- Estetik Çiçekler ---------------------------------------------------------------\n\n");
+	 	for(i=0;i<80;i++)
+			{			
+				if(strcmp(flower[i].ozellik,"Estetik")==0)
+				{
+					say3++;
+					if(say3<10)
+					{
+						printf("	   %d - %s     >> Hissiyat : %s\n",say3,flower[i].ad,flower[i].ozellik); 
+					}
+					else
+					{
+					printf("	  %d - %s     >> Hissiyat : %s\n",say3,flower[i].ad,flower[i].ozellik); 
+					}
+				   
+				
+				}
+			//sleep(1);
+			}
+		
+			printf("\n\n---------------------------------- Zarif Çiçekler ---------------------------------------------------------------\n\n");
+	 	for(i=0;i<80;i++)
+			{			
+				if(strcmp(flower[i].ozellik,"Zarif")==0)
+				{
+					say4++;
+					if(say4<10)
+					{
+						printf("	   %d - %s     >> Hissiyat : %s\n",say4,flower[i].ad,flower[i].ozellik); 
+					}
+					else
+					{
+						printf("	  %d - %s     >> Hissiyat : %s\n",say4,flower[i].ad,flower[i].ozellik); 
+					}
+				   
+				
+				}
+			//sleep(1);
+			}
+			
+			printf("\n\n---------------------------------- Kalýcý Çiçekler ---------------------------------------------------------------\n\n");
+	 	for(i=0;i<80;i++)
+			{			
+				if(strcmp(flower[i].ozellik,"Kalýcý")==0)
+				{
+					say6++;
+					if(say6<10)
+					{
+						printf("	   %d - %s     >> Hissiyat : %s\n",say6,flower[i].ad,flower[i].ozellik); 
+					}
+					else
+					{
+						printf("	  %d - %s     >> Hissiyat : %s\n",say6,flower[i].ad,flower[i].ozellik); 
+					}
+				  
+				
+				}
+			//sleep(1);
+			}
+			printf("\n\n---------------------------------- Süs Çiçekleri ---------------------------------------------------------------\n\n");
+	 	for(i=0;i<80;i++)
+			{			
+				if(strcmp(flower[i].ozellik,"Süslü")==0)
+				{
+					say7++;
+					if(say7<10)
+					{
+					printf("	   %d - %s     >> Hissiyat : %s\n",say7,flower[i].ad,flower[i].ozellik); 
+					}
+					else
+					{
+					printf("	  %d - %s     >> Hissiyat : %s\n",say7,flower[i].ad,flower[i].ozellik); 
+					}
+				   
+				
+				}
+			//sleep(1);
+			}
+			
+			printf("\n\n		Kategorize edilmiþ Çiçekleri Gördünüz Geri Dönmek Ýçin 0'a Basýnýz.'");
+			int ver;
+			scanf("%d",&ver);
+			if(ver==0)
+			{
+				system("cls");
+				anasayfa();
+			}
+			
+	 }
+	 
+}
+
+
+
+
+int main(){
+
+	system("color 0F");
+    setlocale(LC_ALL, "Turkish");
+    anasayfa();
+	printf("\n\n\n");
+   
+    return 0;
+}
+
+
+
+
+
+
